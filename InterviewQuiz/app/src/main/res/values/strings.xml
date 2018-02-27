@@ -1,0 +1,56 @@
+<resources>
+    <!--Strings for Android Manifest xml [CHAR LIMIT=NONE] -->
+    <string name="app_name">Interview Quiz</string>
+
+
+    <!--Strings for first xml activity [CHAR LIMIT=NONE] -->
+    <string name="enter_name">ENTER NAME</string>
+    <string name="enter_email">ENTER EMAIL</string>
+    <string name="no_right_answers">There are no correct answers. Your response will allow us to match you to the best position we can offer.</string>
+    <string name="career_position">1. How far along are you in your career today?</string>
+    <string name="just_starting">I am starting from the beginning without any experience to offer</string>
+    <string name="getting_there">I have much experience but there is quite a bit of learning on the road ahead</string>
+    <string name="senior">I have much experience and will be leading rather than following</string>
+
+
+    <!--Strings for second xml activity [CHAR LIMIT=NONE] -->
+    <string name="choice_satisfaction">2. In your daily experience, how would you describe your feelings about the choices you make?</string>
+    <string name="satisfied">I am happy with the choices I make and would not make them any differently</string>
+    <string name="can_do_better">I try to make the best decision at each opportunity but find I can learn and do better</string>
+    <string name="regret">I often regret my daily choices</string>
+
+
+    <!--Strings for third xml activity [CHAR LIMIT=NONE] -->
+    <string name="choice_travel">3. Your office is on the third floor, will you take the stairs or the elevator?</string>
+    <string name="stairs">Stairs</string>
+    <string name="elevator">Elevator</string>
+    <string name="depends">I will make a decision each day according to the circumstances</string>
+
+
+    <!--Strings for fourth radiogroup [CHAR LIMIT=NONE] -->
+    <string name="choice_train">4. You are a few meters from the train platform and the doors are about to close, you:</string>
+    <string name="sprint">Sprint like hell</string>
+    <string name="bang">Walk fast and bang on the doors hoping the conductor will open</string>
+    <string name="miss">Miss the train and wait for the next one</string>
+    <string name="submit">Submit Answer</string>
+    <string name="restart">Restart Quiz</string>
+
+    <!--Strings for checkboxes [CHAR LIMIT=NONE] -->
+    <string name="question_five_text_view">You are faced with adversity in your personal life, you:</string>
+    <string name="advice">Ask for advice before acting</string>
+    <string name="yoga">Do yoga, breathe and move on</string>
+    <string name="best_immediate">React as you see fit at the moment</string>
+    <!--Strings for Java code Main Activity One [CHAR LIMIT=NONE] -->
+
+    <!--Strings for Java code Main Activity Two [CHAR LIMIT=NONE] -->
+
+    <!--Strings for Java code Main Activity Three [CHAR LIMIT=NONE] -->
+
+    <!--Strings for Java code Main Activity Four [CHAR LIMIT=NONE] -->
+
+
+    <!--Subject header for email[CHAR LIMIT=NONE] -->
+    <string name="email_subject">Score results for</string>
+    <!--Toast message to candidate upon submission of results [CHAR LIMIT=NONE] -->
+    <string name="toast_submit">"Thank you for taking the time to complete the quiz!\nWe will be in touch with you to discuss the results further. "</string>
+</resources>
