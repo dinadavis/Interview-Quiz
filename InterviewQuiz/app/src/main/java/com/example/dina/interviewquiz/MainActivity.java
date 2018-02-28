@@ -22,8 +22,9 @@ import java.text.NumberFormat;
 
 /**
  * This app in an HR quiz to measure the growth mindset in a potential candidate.
- * The quiz tells the candidate there are no right or wrong answer so they will answer freely but
- * is measuring each response with a number value. The highest possible number value is 18 and the lowest is 0. Any candidate receiving a score under 12 might not exhibit a growth mindset in their daily lives.
+ * The quiz measures each response with a number value.
+ * The highest possible number value is 18 and the lowest is 0.
+ * Any candidate receiving a score under 12 might not exhibit a growth mindset in their daily lives.
  */
 public class MainActivity extends AppCompatActivity {
     String name;

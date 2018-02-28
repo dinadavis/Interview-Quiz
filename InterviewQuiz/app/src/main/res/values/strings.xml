@@ -6,7 +6,7 @@
     <!--Strings for first xml activity [CHAR LIMIT=NONE] -->
     <string name="enter_name">ENTER NAME</string>
     <string name="enter_email">ENTER EMAIL</string>
-    <string name="no_right_answers">There are no correct answers. Your response will allow us to match you to the best position we can offer.</string>
+    <string name="no_right_answers">Your response will allow us to match you to the best position we can offer. Please choose the most accurate answer.</string>
     <string name="career_position">1. How far along are you in your career today?</string>
     <string name="just_starting">I am starting from the beginning without any experience to offer</string>
     <string name="getting_there">I have much experience but there is quite a bit of learning on the road ahead</string>
