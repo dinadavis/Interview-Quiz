@@ -370,6 +370,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * This method is called when the user touches the screen outside the edit text field.
+     */
+    public void closeKeyboard(View view) {
+        View v = this.getCurrentFocus();
+        if (v != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+        }
+    }
+
+    /**
      * This method resets the app.
      */
     public void restartQuiz(View view) {
