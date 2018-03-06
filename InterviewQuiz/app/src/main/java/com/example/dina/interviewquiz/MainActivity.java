@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -29,6 +31,7 @@ import java.text.NumberFormat;
 public class MainActivity extends AppCompatActivity {
     String name;
     String email;
+    int score;
     int calculateScore;
     boolean halfAndHalf;
     boolean canDoBetter;
@@ -37,16 +40,47 @@ public class MainActivity extends AppCompatActivity {
     boolean advice;
     boolean yoga;
     boolean bestImmediate;
+    String answer;
+    boolean result;
+    EditText enterAnswer;
+    TextWatcher text = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        enterAnswer = (EditText) findViewById(R.id.editText_question_six);
+        text = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String answer = enterAnswer.getText().toString().trim();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        };
     }
 
     /**
-     * This method is called when the edit text field is filled.
+     * calls the EditText method for question six and converts the answer to use in the score.
+     */
+    public boolean qSix(Editable six){
+        String answer = enterAnswer.getText().toString().trim();
+        enterAnswer.addTextChangedListener(text);
+        if(answer.equalsIgnoreCase(getString(R.string.answer_question_six))) {
+            result = true;
+        }
+        return result;
+    }
+    /**
+     * This method is called when the edit text name field is filled.
      */
     public void NameField(Editable insertName) {
         EditText editName = (EditText) findViewById(R.id.name_view);
@@ -220,48 +254,31 @@ public class MainActivity extends AppCompatActivity {
      * return total score
      */
     private int calculateScore() {
-        int scoreHalfAndHalf = 3;
-        int scoreCanDoBetter = 3;
-        int scoreDepends = 3;
-        int scoreSprint = 3;
-        int scoreAdvice = 3;
-        int scoreYoga = 2;
-        int scoreBestImmediate = 1;
+        int score = 0;
+
         RadioButton onRadioButtonClicked = (RadioButton) findViewById(R.id.radio_half_and_half);
         boolean halfAndHalf = onRadioButtonClicked.isChecked();
 
         if (halfAndHalf) {
-            scoreHalfAndHalf = 3;
-
-        } else {
-            scoreHalfAndHalf = 0;
+            score = score + 3;
         }
         RadioButton onRadioButtonClickedTwo = (RadioButton) findViewById(R.id.radio_can_do_better);
         boolean canDoBetter = onRadioButtonClickedTwo.isChecked();
 
         if (canDoBetter) {
-            scoreCanDoBetter = 3;
-
-        } else {
-            scoreCanDoBetter = 0;
+            score = score + 3;
         }
-
         RadioButton onRadioButtonClickedThree = (RadioButton) findViewById(R.id.radio_depends);
         boolean depends = onRadioButtonClickedThree.isChecked();
 
         if (depends) {
-            scoreDepends = 3;
-        } else {
-            scoreDepends = 0;
+            score = score + 3;
         }
         RadioButton onRadioButtonClickedFour = (RadioButton) findViewById(R.id.radio_sprint);
         boolean sprint = onRadioButtonClickedFour.isChecked();
 
         if (sprint) {
-            scoreSprint = 3;
-
-        } else {
-            scoreSprint = 0;
+            score = score + 3;
         }
         CheckBox onCheckboxClicked = (CheckBox) findViewById(R.id.advice_checkbox);
         boolean advice = onCheckboxClicked.isChecked();
@@ -270,24 +287,22 @@ public class MainActivity extends AppCompatActivity {
         CheckBox onCheckboxClickedThree = (CheckBox) findViewById(R.id.best_immediate_checkbox);
         boolean bestImmediate = onCheckboxClickedThree.isChecked();
         if (advice) {
-            scoreAdvice = 3;
-
-        } else {
-            scoreAdvice = 0;
+            score = score + 3;
         }
         if (yoga) {
-            scoreYoga = 2;
-
-        } else {
-            scoreYoga = 0;
+            score = score + 2;
         }
         if (bestImmediate) {
-            scoreBestImmediate = 1;
-
-        } else {
-            scoreBestImmediate = 0;
+            score = score + 1;
         }
-        return (scoreHalfAndHalf + scoreCanDoBetter + scoreDepends + scoreSprint + scoreAdvice + scoreYoga + scoreBestImmediate);
+        EditText enterAnswer = (EditText) findViewById(R.id.editText_question_six);
+        String answer = enterAnswer.getText().toString();
+
+        if(answer.equalsIgnoreCase(getString(R.string.answer_question_six))) {
+            score = score + 3;
+        }
+
+        return (score);
     }
 
 
@@ -313,8 +328,11 @@ public class MainActivity extends AppCompatActivity {
         boolean yoga = onCheckboxClickedtwo.isChecked();
         CheckBox onCheckboxClickedThree = (CheckBox) findViewById(R.id.best_immediate_checkbox);
         boolean bestImmediate = onCheckboxClickedThree.isChecked();
-        int score = calculateScore();
-        String emailMessage = internalMessage(name, email, halfAndHalf, canDoBetter, depends, sprint, advice, yoga, bestImmediate, calculateScore);
+        EditText enterAnswer = (EditText) findViewById(R.id.editText_question_six);
+        String answer = enterAnswer.getText().toString().trim();
+        boolean result = (answer.equalsIgnoreCase(getString(R.string.answer_question_six)));
+        score = calculateScore();
+        String emailMessage = internalMessage(name, email, halfAndHalf, canDoBetter, depends, sprint, advice, yoga, bestImmediate, answer, result, score, calculateScore);
         Context contextC = getApplicationContext();
         CharSequence text = "Thank you for taking the time to complete the quiz!" + "\nWe will be in touch with you to discuss the results further." + "\nYour final score is: " + calculateScore() + "";
         int duration = Toast.LENGTH_LONG;
@@ -345,10 +363,13 @@ public class MainActivity extends AppCompatActivity {
      * @param advice         provides the choice for this checkbox
      * @param yoga           provides the choice for this checkbox
      * @param bestImmediate  provides the choice for this checkbox
+     * @param answer provides which answer which was chosen
+     * @param result provides whether the answer was true or false
+     * @param score calculates each score for each answer separately
      * @param calculateScore provides the final score of the applicant
      * @return detailed summary
      */
-    private String internalMessage(String name, String email, boolean halfAndHalf, boolean canDoBetter, boolean depends, boolean sprint, boolean advice, boolean yoga, boolean bestImmediate, int calculateScore) {
+    private String internalMessage(String name, String email, boolean halfAndHalf, boolean canDoBetter, boolean depends, boolean sprint, boolean advice, boolean yoga, boolean bestImmediate, String answer, boolean result, int score, int calculateScore) {
         String emailMessage = "Name: " + name;
         emailMessage += "\nEmail Address: " + email;
         emailMessage += "\nAnswer to question one: " + halfAndHalf;
@@ -358,6 +379,7 @@ public class MainActivity extends AppCompatActivity {
         emailMessage += "\nAnswer to checkbox one: " + advice;
         emailMessage += "\nAnswer to checkbox two: " + yoga;
         emailMessage += "\nAnswer to checkbox three: " + bestImmediate;
+        emailMessage += "\nAnswer to question six: " + answer + "; " + result;
         emailMessage += "\nScore of Response: " + calculateScore();
         return emailMessage;
     }

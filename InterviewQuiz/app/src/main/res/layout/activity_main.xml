@@ -27,6 +27,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginBottom="12dp"
+                android:enabled="true"
+                android:focusable="true"
                 android:hint="@string/enter_name"
                 android:inputType="textCapWords"
                 android:textAllCaps="true" />
@@ -37,6 +39,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/name_view"
                 android:layout_marginBottom="12dp"
+                android:enabled="true"
+                android:focusable="true"
                 android:hint="@string/enter_email"
                 android:inputType="textEmailAddress"
                 android:textAllCaps="true" />
@@ -225,7 +229,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/radioGroup_04"
                 android:layout_marginBottom="8dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="8dp"
                 android:text="@string/question_five_text_view"
                 android:textColor="#000000" />
 
@@ -262,12 +266,33 @@
                 android:text="@string/best_immediate"
                 android:textSize="14sp" />
 
+            <TextView
+                android:id="@+id/question_six"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/best_immediate_checkbox"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/question_six_text_view"
+                android:textColor="#000000" />
+
+            <EditText
+                android:id="@+id/editText_question_six"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/question_six"
+                android:layout_marginBottom="32dp"
+                android:enabled="true"
+                android:focusable="true"
+                android:hint="@string/enter_answer"
+                android:inputType="textMultiLine" />
+
             <Button
                 android:id="@+id/button_submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/best_immediate_checkbox"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/editText_question_six"
                 android:layout_marginTop="16dp"
                 android:onClick="submitAnswers"
                 android:text="@string/submit" />
@@ -276,7 +301,7 @@
                 android:id="@+id/button_restart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentLeft="true"
                 android:layout_below="@+id/button_submit"
                 android:layout_marginTop="16dp"
                 android:onClick="restartQuiz"

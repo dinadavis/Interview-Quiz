@@ -40,11 +40,11 @@
     <string name="advice">Ask for advice before acting</string>
     <string name="yoga">Do yoga, breathe and move on</string>
     <string name="best_immediate">React as you see fit at the moment</string>
-    <!--Strings for Java code Main Activity One [CHAR LIMIT=NONE] -->
 
-    <!--Strings for Java code Main Activity Two [CHAR LIMIT=NONE] -->
-
-    <!--Strings for Java code Main Activity Three [CHAR LIMIT=NONE] -->
+    <!--Strings for checkboxes [CHAR LIMIT=NONE] -->
+    <string name="question_six_text_view">You made a catastrophic mistake at work that cannot be undone without some form of damage. \nWould you approach your manager to correct the situation or would you try to get by and hope for the best?</string>
+    <string name="enter_answer">Enter "manager" for the first option or "get by" for the second option</string>
+    <string name="answer_question_six">manager</string>
 
     <!--Strings for Java code Main Activity Four [CHAR LIMIT=NONE] -->
 
